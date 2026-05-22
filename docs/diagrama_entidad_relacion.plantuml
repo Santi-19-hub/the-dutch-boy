@@ -1,0 +1,23 @@
+@startuml Diagrama_Entidad_Relacion
+
+
+skinparam linestyle orthogonal
+hide circle
+
+entity "history (Tabla)" as history {
+    * **id** : INTEGER <<PK>> [AutoIncrement]
+    --
+    * amount_cop : REAL
+    * exchange_rate : REAL
+    * total_usd : REAL
+    * target_currency : TEXT
+    * date : TIMESTAMP [DEFAULT: CURRENT_TIMESTAMP]
+}
+
+note right of history
+    Almacena cada conversión de moneda 
+    exitosa realizada por los usuarios 
+    para proyectar sus ahorros de viaje.
+end note
+
+@enduml

@@ -1,0 +1,33 @@
+@startuml Diagrama_de_Clases_API
+
+package "app.models.schemas" {
+    class ConversionRequest {
+        + amount_cop : float
+        + exchange_rate : float
+        + target_currency : str
+    }
+}
+
+package "app.db.connection" {
+    class DatabaseManager << (M, #FF7700) Module >> {
+        + init_db() : void
+        + insert_conversion(amount_cop, exchange_rate, total_usd, target_currency) : void
+        + get_all_history() : list
+    }
+}
+
+package "main" {
+    class FastAPI_App << (A, #00A3A3) Application >> {
+        + app : FastAPI
+        + startup_event() : void
+        + read_root() : dict
+        + convert_currency(data: ConversionRequest) : dict
+        + read_history() : dict
+    }
+}
+
+' Relaciones de dependencia y flujo
+FastAPI_App ..> ConversionRequest : "Valida datos de entrada con"
+FastAPI_App --> DatabaseManager : "Llama funciones de"
+
+@enduml
