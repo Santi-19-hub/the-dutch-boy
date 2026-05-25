@@ -7,9 +7,14 @@ from app.db.connection import insert_conversion
 app = FastAPI(title="GlobalSettler API - MVP")
 
 @app.on_event("startup")
-
 def startup_event():
-    init_db()
+    try:
+        init_db()
+        print("\n🚀 [SUCCESS] ¡Base de datos MySQL inicializada y sincronizada con éxito! 🎉\n")
+    except Exception as e:
+        print(f"\n❌ [ERROR] Error crítico al inicializar la base de datos: {e} 🚨\n")
+
+
 
 @app.get("/")
 def read_root():

@@ -1,4 +1,4 @@
-@startuml Diagrama_de_Clases_API
+@startuml
 
 package "app.models.schemas" {
     class ConversionRequest {
@@ -9,7 +9,7 @@ package "app.models.schemas" {
 }
 
 package "app.db.connection" {
-    class DatabaseManager << (M, #FF7700) Module >> {
+    class DatabaseManager << (M, #FF7000) Module >> {
         + init_db() : void
         + insert_conversion(amount_cop, exchange_rate, total_usd, target_currency) : void
         + get_all_history() : list
@@ -26,8 +26,43 @@ package "main" {
     }
 }
 
-' Relaciones de dependencia y flujo
 FastAPI_App ..> ConversionRequest : "Valida datos de entrada con"
 FastAPI_App --> DatabaseManager : "Llama funciones de"
 
+@endum
+
+
+
+@startuml Diagrama_clases_API_GlobalSettler{
+package "app.models.schemas"
+    class ConversionRequest{
+        amount_cop: float
+        exchange_rate: float
+        target_currency: string
+    }
+}    
+
+package "database(connection.py)"{
+    class DBConnection{
+        get_db_connection(): MYSQLConnection
+        init_db(): void
+        insert_conversion(amount_cop, exchange_rate,total_usd,target_currency): void
+        get_all_history(): list
+    }
+}
+
+package "API Routes (main.py)"{
+    class API_Endpoints {
+        read:root(): dict
+        convert_currency(data: ConversionRequest): dict
+        get_conversion_history(): dict
+    }
+}
+
+
+ConversionRequest.down.> API_Endpoints : "Usar como entrada"
+API_Endpoints -down-> DBConnection : "Llama funciones de persistencia"
+
 @enduml
+
+

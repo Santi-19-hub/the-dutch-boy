@@ -21,3 +21,22 @@ note right of history
 end note
 
 @enduml
+
+@startuml Diagrama_ER_GlobalSettler
+
+hide circle
+skinparam linetype ortho
+
+entity "history" {
+    * id : INT <<PK>> [AUTO_INCREMENT]
+    --
+    * amount_cop : REAL
+    * exchange_rate : REAL
+    * total_usd : REAL
+    * target_currency : VARCHAR(10)
+    * date : DATETIME [DEFAULT CURRENT_TIMESTAMP]
+}
+
+@enduml
+
+
