@@ -12,3 +12,12 @@ Si un usuario registra un ingreso de $400,000 COP, el sistema valida el monto me
 Dada la sensibilidad de los datos financieros gestionados, GlobalSettler API se desarrolla bajo principios de seguridad desde el diseño. Se implementan validaciones estrictas para prevenir ataques de inyección y se asegura la integridad de los datos de ahorro mediante el uso de esquemas de Pydantic y manejo de excepciones personalizadas.
 
 ## Plan de ejecucion
+
+
+## Arquitectura del Proyecto
+
+### Diagrama de Clases
+![Diagrama de Clases](docs/diagrama_clases.png)
+
+### Diagrama Entidad-Relación
+![Diagrama ER](docs/diagrama_er.png)
