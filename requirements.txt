@@ -1,2 +1,5 @@
 fastapi==0.136.1
 uvicorn==0.24.0
+pytest==9.0.3
+httpx>=0.34.0
+mysql-connector-python==8.0.33

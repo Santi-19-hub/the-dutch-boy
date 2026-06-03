@@ -20,4 +20,4 @@ Dada la sensibilidad de los datos financieros gestionados, GlobalSettler API se 
 ![Diagrama de Clases](docs/diagrama_clases.png)
 
 ### Diagrama Entidad-Relación
-![Diagrama ER](docs/diagrama_er.png)
+![Diagrama ER](docs/diagrama_er.png)    
