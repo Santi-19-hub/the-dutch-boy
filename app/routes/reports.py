@@ -39,3 +39,22 @@ def update_reporte(id: int):
 @router.delete("/{id}", summary="Delete Reporte")
 def delete_reporte(id: int):
     return {"message": f"Reporte {id} eliminado"}
+
+@router.get("/summary", summary="Obtener resumen estadístico global")
+def get_global_summary():
+    try:
+        
+        total_transacciones = 150  
+        total_ahorros = 350.50     
+        
+        return {
+            "status": "success",
+            "total_transacciones": total_transacciones,
+            "total_ahorros": total_ahorros,
+            "reportes_generados": 12
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Error al calcular el resumen: {str(e)}"
+        )
